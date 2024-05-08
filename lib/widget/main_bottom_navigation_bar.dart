@@ -19,6 +19,7 @@ class MainBottomNavigationBar extends StatefulWidget {
      var tabPageIndexProvider = Provider.of<TabPageIndexProvider>(context,listen: false);
      // 하단에 배치될 네비게이션 바
      return NavigationBar(
+       height: kBottomNavigationBarHeight,
        destinations: [
          NavigationDestination(
            // 평상시의 아이콘
