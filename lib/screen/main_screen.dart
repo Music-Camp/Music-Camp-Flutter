@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:music_camp/provider/tab_page_index_provider.dart';
 import 'package:music_camp/screen/board_screen.dart';
+import 'package:music_camp/screen/my_page_screen.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
       child: [
         BoardScreen(),
         Center(child: Text("출석")),
-        Center(child: Text("프로필")),
+        MyPageScreen()
       ][currentPageIndex],
     );
   }
