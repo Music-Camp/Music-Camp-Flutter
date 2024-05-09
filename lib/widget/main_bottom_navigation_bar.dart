@@ -42,6 +42,14 @@ class MainBottomNavigationBar extends StatefulWidget {
              selectedIcon: Icon(Icons.person),
              label: "프로필"
          ),
+
+         NavigationDestination(
+           // 평상시의 아이콘
+             icon: Icon(Icons.person_outlined),
+             // 눌러졌을 때의 아이콘
+             selectedIcon: Icon(Icons.person),
+             label: "로그인"
+         ),
        ],
        // 네비게이션 바에 배치된 아이콘 메뉴들 중 어떤 것을 선택할 것인가
        selectedIndex: tabPageIndexProvider.currentPageIndex,
