@@ -25,7 +25,6 @@ class _MyPageListViewState extends State<MyPageListView> {
         child: Text("닉네임"),
       ),
 
-
     ]);
   }
 }
