@@ -26,6 +26,7 @@ class _MusicCampAppState extends State<MusicCampApp> {
                 // 전체적인 어플의 테마를 어두운 테마로 설정한다.
                 brightness: Brightness.dark),
             useMaterial3: true),
+
         home: ChangeNotifierProvider(
           create: (BuildContext context) => TabPageIndexProvider(),
           child: Scaffold(

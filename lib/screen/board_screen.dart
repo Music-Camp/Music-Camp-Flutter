@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_camp/model/board.dart';
 import 'package:music_camp/screen/board_add_screen.dart';
 import 'package:music_camp/widget/board_list_view.dart';
 
@@ -12,6 +13,9 @@ class BoardScreen extends StatefulWidget {
 }
 
 class _BoardScreenState extends State<BoardScreen> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
