@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_camp/screen/board_detail_screen.dart';
+import 'package:music_camp/service/board_service.dart';
+
+import '../model/board.dart';
 
 class BoardListView extends StatefulWidget {
   const BoardListView({super.key});
@@ -9,22 +12,43 @@ class BoardListView extends StatefulWidget {
 }
 
 class _BoardListViewState extends State<BoardListView> {
+
+  List<Board> _boardList = <Board>[];
+  bool loading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BoardService.getBoardList().then((value){
+      _boardList = value;
+      loading = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return makeListItem(context);
+        return makeListItem(context,_boardList[index]);
       },
-      itemCount: 10,
+      itemCount: _boardList.length,
     );
   }
 }
 
-Widget makeListItem(BuildContext context) {
+Widget makeListItem(BuildContext context,Board board) {
   return ListTile(
-    leading: Image.asset('lib/assets/images/img_dog.jpg'),
-    title: Text("우리 강아지"),
-    subtitle: Text("우리 강아지 귀엽지욤?"),
+    leading: Image.network(
+      board.imageUrl,
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress == null) return child;
+        return CircularProgressIndicator();
+      }
+    ),
+    title: Text(board.title),
+    subtitle: Text(board.title),
+    trailing: Text(board.nickName.toString()),
     isThreeLine: true,
     onTap: () {
       Navigator.of(context).push(

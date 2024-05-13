@@ -53,7 +53,10 @@ Widget makeListItem(BuildContext context) {
         children: [
           CircleAvatar(
             // 배경 이미지
-            backgroundImage: AssetImage("lib/assets/images/img_dog.jpg"),
+            backgroundImage: NetworkImage("https://www.ghibli.jp/gallery/totoro030.jpg"),
+            onBackgroundImageError: (exception, stackTrace) {
+
+            },
             // 크기
             radius: 24,
           ),
