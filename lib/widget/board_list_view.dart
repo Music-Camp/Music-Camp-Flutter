@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/screen/board_detail_screen.dart';
-import 'package:music_camp/service/board_service.dart';
 
-import '../model/board.dart';
+
+import 'package:music_camp/data/respository_impl/board_repository_impl.dart';
+
+
+import '../domain/model/board.dart';
+import '../presentation/screens/board/board_detail_screen.dart';
 
 class BoardListView extends StatefulWidget {
   const BoardListView({super.key});

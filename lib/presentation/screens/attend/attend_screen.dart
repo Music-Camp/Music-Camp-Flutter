@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_camp/widget/attend_top_app_bar.dart';
 
-import '../widget/attend_list_view.dart';
+import '../../../widget/attend_list_view.dart';
 
 class AttendScreen extends StatefulWidget {
   const AttendScreen({super.key});

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../model/board.dart';
+import '../../domain/model/board.dart';
+
 import 'package:http/http.dart' as http;
 
 class BoardService {

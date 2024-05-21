@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 
-import '../model/user.dart';
 
 class UserService{
   static const String url = 'http://52.78.37.57:8080/music/user';

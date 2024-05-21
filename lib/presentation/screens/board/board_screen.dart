@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/model/board.dart';
-import 'package:music_camp/screen/board_add_screen.dart';
+import 'package:music_camp/presentation/screens/board/board_add_screen.dart';
 import 'package:music_camp/widget/board_list_view.dart';
 
-import '../widget/board_top_app_bar.dart';
+import '../../../widget/board_top_app_bar.dart';
 
 class BoardScreen extends StatefulWidget {
   const BoardScreen({super.key});

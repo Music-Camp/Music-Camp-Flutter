@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/screen/login_profile_screen.dart';
+
+import 'login_profile_screen.dart';
 
 class LoginMainScreen extends StatefulWidget {
   const LoginMainScreen({super.key});
