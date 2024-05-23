@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/widget/attend_circle_slider.dart';
+import 'package:music_camp/presentation/screens/attend/component/attend_circle_slider.dart';
 
 class AttendListView extends StatefulWidget {
   const AttendListView({super.key});

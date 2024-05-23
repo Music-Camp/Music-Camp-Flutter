@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/widget/board_detail_photo_list_view.dart';
+
+import 'board_detail_photo_list_view.dart';
 
 class BoardDetailListView extends StatefulWidget {
   const BoardDetailListView({super.key});

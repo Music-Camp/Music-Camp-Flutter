@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:music_camp/presentation/screens/board/board_add_screen.dart';
-import 'package:music_camp/widget/board_list_view.dart';
 
-import '../../../widget/board_top_app_bar.dart';
+import 'component/board_list_view.dart';
+import 'component/board_top_app_bar.dart';
+
 
 class BoardScreen extends StatefulWidget {
   const BoardScreen({super.key});
@@ -12,8 +13,6 @@ class BoardScreen extends StatefulWidget {
 }
 
 class _BoardScreenState extends State<BoardScreen> {
-
-
 
   @override
   Widget build(BuildContext context) {

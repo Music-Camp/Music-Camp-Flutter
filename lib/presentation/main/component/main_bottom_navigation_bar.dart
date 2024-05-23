@@ -1,6 +1,8 @@
- import 'package:flutter/material.dart';
-import 'package:music_camp/provider/tab_page_index_provider.dart';
+import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+
+import '../provider/tab_page_index_provider.dart';
 
 class MainBottomNavigationBar extends StatefulWidget {
    const MainBottomNavigationBar({super.key});

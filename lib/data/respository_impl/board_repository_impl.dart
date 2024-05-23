@@ -4,10 +4,13 @@ import '../../domain/model/board.dart';
 
 import 'package:http/http.dart' as http;
 
-class BoardService {
+import '../../domain/repository/board_repository.dart';
+
+class BoardRepositoryImpl extends BoardRepository {
+
   static const String url = 'http://52.78.37.57:8080/music/post';
 
-  static Future<List<Board>> getBoardList() async {
+  Future<List<Board>> fetchBoardList() async {
     try{
       final response = await http.get(Uri.parse(url));
       if(response.statusCode == 200){

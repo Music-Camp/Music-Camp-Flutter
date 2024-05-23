@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:music_camp/provider/tab_page_index_provider.dart';
 import 'package:music_camp/presentation/screens/attend/attend_screen.dart';
 import 'package:music_camp/presentation/screens/login/login_main_screen.dart';
 import 'package:music_camp/presentation/screens/my_page/my_page_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../main/provider/tab_page_index_provider.dart';
 import '../board/board_screen.dart';
 
 class MainScreen extends StatefulWidget {

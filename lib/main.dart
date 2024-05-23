@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/presentation/screens/home/main_screen.dart';
-import 'package:music_camp/provider/tab_page_index_provider.dart';
+import 'package:music_camp/presentation/main/provider/tab_page_index_provider.dart';
+import 'package:music_camp/presentation/screens/home/home_screen.dart';
 
-import 'package:music_camp/widget/main_bottom_navigation_bar.dart';
+import 'package:music_camp/presentation/main/component/main_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() {

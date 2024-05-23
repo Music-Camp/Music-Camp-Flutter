@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/widget/board_detail_list_view.dart';
-import 'package:music_camp/widget/board_detail_top_app_bar.dart';
+import 'package:music_camp/presentation/screens/board/component/board_detail_list_view.dart';
+
+import 'component/board_detail_top_app_bar.dart';
 
 class BoardDetailScreen extends StatefulWidget {
   const BoardDetailScreen({super.key});
