@@ -25,6 +25,8 @@ dependencies:
   injectable:
   logger:
   freezed_annotation:
+  velocity_x:
+  flutter_native_splash:
 
 dev_dependencies:
   flutter_test:
@@ -43,5 +45,6 @@ flutter:
     - assets/image/
     - assets/svg/
     - assets/lottie/
+
 
 
