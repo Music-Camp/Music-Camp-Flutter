@@ -27,6 +27,8 @@ dependencies:
   freezed_annotation:
   velocity_x:
   flutter_native_splash:
+  after_layout:
+  nav:
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +47,7 @@ flutter:
     - assets/image/
     - assets/svg/
     - assets/lottie/
+    - assets/image/splash/
 
 
 
