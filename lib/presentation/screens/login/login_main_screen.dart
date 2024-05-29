@@ -24,7 +24,7 @@ class _LoginMainScreenState extends State<LoginMainScreen> {
                     MaterialPageRoute(builder: (context) => LoginProfileScreen(),)
                   );
                 },
-                child: Image.asset("assets/images/button_kakao.png"),
+                child: Image.asset("assets/image/kakao_login_btn.png"),
               ),
               Padding(padding: EdgeInsets.only(bottom: 10))
             ]
