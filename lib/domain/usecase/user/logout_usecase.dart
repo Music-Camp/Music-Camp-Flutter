@@ -15,5 +15,4 @@ class LogoutUsecase extends RemoteUsecase<UserRepository>{
       throw CommonException.setError(error);
     }
   }
-
 }

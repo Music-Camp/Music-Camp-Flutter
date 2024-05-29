@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:music_camp/domain/repository/user_repository.dart';
 
 import '../base/remote.usecase.dart';
 
+@singleton
 class UserUsecase{
   final UserRepository _userRepository;
 

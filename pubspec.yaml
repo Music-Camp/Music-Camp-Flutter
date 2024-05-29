@@ -24,6 +24,7 @@ dependencies:
   kakao_flutter_sdk_user:
   injectable:
   logger:
+  freezed_annotation:
 
 dev_dependencies:
   flutter_test:

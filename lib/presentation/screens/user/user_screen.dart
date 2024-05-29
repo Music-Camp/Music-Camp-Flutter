@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:music_camp/presentation/main/bloc/user_bloc/user_bloc.dart';
+import '../../../core/utils/constant.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
@@ -9,36 +10,53 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 60,
-        ),
-        child: Column(
-          children: [
-            Text(
-              '유저 정보 창',
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 24),
-            SizedBox(
-              height: 48,
-              child: TextButton(
-                //TODO 로그인 이벤트 호출
-                onPressed: null,
-                style: const ButtonStyle(
-                  padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
-                    EdgeInsets.zero,
-                  ),
+      child: BlocBuilder<UserBloc, UserState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case Status.initial:
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 60,
                 ),
-                child: Image.asset(
-                  'assets/image/kakao_login_btn.png',
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
+                child: Column(
+                  children: [
+                    Text(
+                      '유저 정보 창',
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 24),
+                    SizedBox(
+                      height: 48,
+                      child: TextButton(
+                        onPressed: () => context.read<UserBloc>().add(UserLogin()),
+                        style: const ButtonStyle(
+                          padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
+                            EdgeInsets.zero,
+                          ),
+                        ),
+                        child: Image.asset(
+                          'assets/image/kakao_login_btn.png',
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-          ],
-        ),
+              );
+            case Status.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case Status.success:
+              return UserProfile();
+            case Status.error:
+              return const Center(
+                child: Text('error'),
+              );
+          }
+          throw();
+        },
       ),
     );
   }
@@ -68,7 +86,6 @@ class UserProfile extends StatelessWidget {
             Text(
               //TODO 유저 이름
               '무명의 사용자',
-
             ),
             const SizedBox(
               height: 24,
@@ -85,7 +102,7 @@ class UserProfile extends StatelessWidget {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius:
-                      const BorderRadius.all(Radius.circular(8.0)),
+                          const BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
                 ),
@@ -93,7 +110,6 @@ class UserProfile extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 12.0),
                   child: Text(
                     '로그아웃',
-
                   ),
                 ),
               ),
