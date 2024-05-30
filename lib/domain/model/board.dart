@@ -39,7 +39,8 @@ class BoardResponse {
 class Board {
   int postId;
   int userId;
-  NickName nickName;
+  // 닉네임 타입 확인
+  String nickName;
   String title;
   String content;
   String imageUrl;
@@ -62,7 +63,8 @@ class Board {
   factory Board.fromJson(Map<String, dynamic> json) => Board(
     postId: json["postId"],
     userId: json["userId"],
-    nickName: nickNameValues.map[json["nickName"]]!,
+    // 닉네임에 대한 수정 필요
+    nickName: json["nickName"],
     title: json["title"],
     content: json["content"],
     imageUrl: json["imageURL"],
@@ -74,7 +76,7 @@ class Board {
   Map<String, dynamic> toJson() => {
     "postId": postId,
     "userId": userId,
-    "nickName": nickNameValues.reverse[nickName],
+    "nickName": nickName,
     "title": title,
     "content": content,
     "imageURL": imageUrl,
@@ -84,15 +86,7 @@ class Board {
   };
 }
 
-enum NickName {
-  AARON,
-  BARON
-}
 
-final nickNameValues = EnumValues({
-  "aaron": NickName.AARON,
-  "baron": NickName.BARON
-});
 
 class EnumValues<T> {
   Map<String, T> map;

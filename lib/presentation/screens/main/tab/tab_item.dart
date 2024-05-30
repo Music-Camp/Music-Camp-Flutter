@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_camp/presentation/screens/attend/attend_screen.dart';
-import 'package:music_camp/presentation/screens/board/board_screen.dart';
+import 'package:music_camp/presentation/screens/attend/s_attend.dart';
+import 'package:music_camp/presentation/screens/board/s_board.dart';
 import 'package:music_camp/presentation/screens/login/login_main_screen.dart';
 import 'package:music_camp/presentation/screens/user/user_screen.dart';
 

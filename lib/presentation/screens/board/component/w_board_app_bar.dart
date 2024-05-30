@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class BoardTopAppBar extends StatefulWidget implements PreferredSizeWidget{
-  const BoardTopAppBar({super.key});
+class BoardAppBar extends StatefulWidget implements PreferredSizeWidget{
+  const BoardAppBar({super.key});
 
   @override
-  State<BoardTopAppBar> createState() => _BoardTopAppBarState();
+  State<BoardAppBar> createState() => _BoardAppBarState();
 
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
-class _BoardTopAppBarState extends State<BoardTopAppBar> {
+class _BoardAppBarState extends State<BoardAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
