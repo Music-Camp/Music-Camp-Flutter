@@ -1,171 +1,79 @@
 import 'dart:async';
 import 'dart:ffi';
 
-import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:music_camp/presentation/main/cubit/bottom_nav_cubit.dart';
 import 'package:music_camp/presentation/screens/attend/s_attend.dart';
-import 'package:music_camp/presentation/screens/board/s_board.dart';
+import 'package:music_camp/presentation/screens/board/board_screen.dart';
 import 'package:music_camp/presentation/screens/login/login_main_screen.dart';
-import 'package:music_camp/presentation/screens/main/tab/tab_item.dart';
-import 'package:music_camp/presentation/screens/main/tab/tab_navigator.dart';
+import 'package:music_camp/presentation/screens/user/user_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => BottomNavCubit(),
+      child: MainScreenView(),
+    );
+  }
 }
 
-class _MainScreenState extends State<MainScreen>
-    with SingleTickerProviderStateMixin, AfterLayoutMixin {
+class MainScreenView extends StatelessWidget {
+  const MainScreenView({super.key});
 
-  TabItem _currentTab =TabItem.board;
-
-  final tabs = [
-    TabItem.board,
-    TabItem.attend,
-    TabItem.user,
-    TabItem.login,
-  ];
-  final List<GlobalKey<NavigatorState>> navigatorKeys = [];
-
-  int get _currentIndex => tabs.indexOf(_currentTab);
-
-  GlobalKey<NavigatorState> get _currentTabNavigationKey => navigatorKeys[_currentIndex];
-
-  ///bottomNavigationBar 아래 영역 까지 그림
-  bool get extendBody => true;
-
-  static double get bottomNavigationBarBorderRadius => 30.0;
-
-  static const double bottomNavigatorHeight = 50;
-
-  @override
-  void initState() {
-    super.initState();
-    initNavigatorKeys();
-  }
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      body: BoardScreen(),
-      bottomNavigationBar: _buildBottomNavigationBar(context),
-    );
-  }
-
-  @override
-  FutureOr<void> afterFirstLayout(BuildContext context) {
-    // await login();
-    // 스플래쉬가 노출되는 동안 로그인 혹은 로딩 작업을 수행하면 된다.
-    FlutterNativeSplash.remove();
-  }
-
-  IndexedStack get pages => IndexedStack(
-      index: _currentIndex,
-      children: tabs
-          .mapIndexed((tab, index) => Offstage(
-        offstage: _currentTab != tab,
-        child: TabNavigator(
-          navigatorKey: navigatorKeys[index],
-          tabItem: tab,
-        ),
-      ))
-          .toList());
-
-  Future<bool> _handleBackPressed() async {
-    final isFirstRouteInCurrentTab =
-    (await _currentTabNavigationKey.currentState?.maybePop() == false);
-    if (isFirstRouteInCurrentTab) {
-      if (_currentTab != TabItem.board) {
-        _changeTab(tabs.indexOf(TabItem.board));
-        return false;
-      }
-    }
-    // maybePop 가능하면 나가지 않는다.
-    return isFirstRouteInCurrentTab;
-  }
-
-  Widget _buildBottomNavigationBar(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        boxShadow: [
-          BoxShadow(color: Colors.black26, spreadRadius: 0, blurRadius: 10),
-        ],
+      body: BlocBuilder<BottomNavCubit, BottomNav>(
+        builder: (_, state) {
+          switch (state) {
+            case BottomNav.board:
+              return const BoardScreen();
+            case BottomNav.attend:
+              return const AttendScreen();
+            case BottomNav.user:
+              return const UserScreen();
+            case BottomNav.login:
+              return const LoginMainScreen();
+          }
+        },
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(bottomNavigationBarBorderRadius),
-          topRight: Radius.circular(bottomNavigationBarBorderRadius),
-        ),
-        child: BottomNavigationBar(
-          items: navigationBarItems(context),
-          currentIndex: _currentIndex,
-          // selectedItemColor: context.appColors.text,
-          // unselectedItemColor: context.appColors.iconButtonInactivate,
-          onTap: _handleOnTapNavigationBarItem,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-        ),
+      bottomNavigationBar: BlocBuilder<BottomNavCubit, BottomNav>(
+        builder: (_, state) {
+
+          return BottomNavigationBar(
+            currentIndex: state.index,
+            onTap: (index) => context.read<BottomNavCubit>().changeIndex(index),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.book),
+                label: '게시판',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.check_box_outlined),
+                label: '출석체크',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: '프로필',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.book),
+                label: '로그인',
+              ),
+            ],
+
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+          );
+        },
       ),
     );
-  }
-
-  List<BottomNavigationBarItem> navigationBarItems(BuildContext context) {
-    return tabs
-        .mapIndexed(
-          (tab, index) => tab.toNavigationBarItem(
-        context,
-        isActivated: _currentIndex == index,
-      ),
-    )
-        .toList();
-  }
-
-  void _changeTab(int index) {
-    setState(() {
-      _currentTab = tabs[index];
-    });
-  }
-
-  BottomNavigationBarItem bottomItem(
-      bool activate, IconData iconData, IconData inActivateIconData, String label) {
-    return BottomNavigationBarItem(
-        icon: Icon(
-          key: ValueKey(label),
-          activate ? iconData : inActivateIconData,
-          // color: activate ? context.appColors.iconButton : context.appColors.iconButtonInactivate,
-        ),
-        label: label);
-  }
-
-  void _handleOnTapNavigationBarItem(int index) {
-    final oldTab = _currentTab;
-    final targetTab = tabs[index];
-    if (oldTab == targetTab) {
-      final navigationKey = _currentTabNavigationKey;
-      popAllHistory(navigationKey);
-    }
-    _changeTab(index);
-  }
-
-  void popAllHistory(GlobalKey<NavigatorState> navigationKey) {
-    final bool canPop = navigationKey.currentState?.canPop() == true;
-    if (canPop) {
-      while (navigationKey.currentState?.canPop() == true) {
-        navigationKey.currentState!.pop();
-      }
-    }
-  }
-
-
-  void initNavigatorKeys() {
-    for (final _ in tabs) {
-      navigatorKeys.add(GlobalKey<NavigatorState>());
-    }
   }
 }

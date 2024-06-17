@@ -24,7 +24,7 @@ Widget makeListItem(BuildContext context){
     child: Row(
       children: [
         Image.asset(
-            "lib/assets/images/img_dog.jpg",
+            "assets/image/img_dog.png",
           width: 100,
 
         )

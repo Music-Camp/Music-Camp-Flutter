@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 BoardResponse boardResponseFromJson(String str) => BoardResponse.fromJson(json.decode(str));
 
 String boardResponseToJson(BoardResponse data) => json.encode(data.toJson());
@@ -36,7 +38,8 @@ class BoardResponse {
   };
 }
 
-class Board {
+@freezed
+class Board{
   int postId;
   int userId;
   // 닉네임 타입 확인
@@ -86,16 +89,3 @@ class Board {
   };
 }
 
-
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}

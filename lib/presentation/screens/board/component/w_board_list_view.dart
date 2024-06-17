@@ -8,7 +8,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../domain/model/board.dart';
 import '../../../../domain/repository/board_repository.dart';
-import '../s_board_detail.dart';
+import '../board_detail_screen.dart';
 
 class BoardListView extends StatefulWidget {
   const BoardListView({super.key});
@@ -67,11 +67,12 @@ class _BoardListViewState extends State<BoardListView> {
 
 Widget makeListItem(BuildContext context, Board board) {
   return ListTile(
-    leading: Image.network(board.imageUrl,
-        loadingBuilder: (context, child, loadingProgress) {
-      if (loadingProgress == null) return child;
-      return CircularProgressIndicator();
-    }),
+    // leading: Image.network(board.imageUrl,
+    //     loadingBuilder: (context, child, loadingProgress) {
+    //   if (loadingProgress == null) return child;
+    //   return CircularProgressIndicator();
+    // }),
+    leading: Image.asset('assets/image/img_dog.png'),
     title: Text(board.title),
     subtitle: Text(board.title),
     trailing: Text(board.nickName.toString()),
