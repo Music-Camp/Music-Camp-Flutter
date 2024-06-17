@@ -1,24 +1,24 @@
 import 'package:equatable/equatable.dart';
 import 'package:music_camp/domain/model/board.dart';
 
-abstract class BoardState extends Equatable{
+sealed class BoardState extends Equatable{
   @override
   List<Object?> get props => [];
 }
 
-class BoardInitial extends BoardState{}
-class BoardLoading extends BoardState{}
-class BoardLoaded extends BoardState{
+class BoardInitialState extends BoardState{}
+class BoardLoadingState extends BoardState{}
+class BoardLoadedState extends BoardState{
   final List<Board> boards;
 
-  BoardLoaded(this.boards);
+  BoardLoadedState(this.boards);
 }
-class BoardAdded extends BoardState{}
+class BoardAddedState extends BoardState{}
 
-class BoardError extends BoardState{
+class BoardErrorState extends BoardState{
   final String message;
 
-  BoardError(this.message);
+  BoardErrorState(this.message);
 
   @override
   List<Object?> get props => [message];

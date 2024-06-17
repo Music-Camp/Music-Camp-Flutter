@@ -17,6 +17,7 @@ class BoardDetailScreen extends StatefulWidget {
 }
 
 class _BoardDetailScreenState extends State<BoardDetailScreen> {
+  final node = FocusNode();
 
   @override
   Widget build(BuildContext context) {

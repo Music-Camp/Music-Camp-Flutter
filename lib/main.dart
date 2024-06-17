@@ -6,6 +6,8 @@ import 'package:music_camp/presentation/screens/board/bloc/board_bloc.dart';
 
 import 'package:timeago_flutter/timeago_flutter.dart' as timeago;
 
+import 'data/respository_impl/board_repository_impl.dart';
+
 void main() async {
   // final bindings = WidgetsFlutterBinding.ensureInitialized();
   // 네이티브 화면을 보존해줌
@@ -39,10 +41,8 @@ class _MusicCampAppState extends State<MusicCampApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (BuildContext context) {
-            return BoardBloc();
-          },
-        )
+          create: (context) => BoardBloc(BoardRepositoryImpl()),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: router,

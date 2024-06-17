@@ -8,9 +8,8 @@ import '../../domain/repository/board_repository.dart';
 
 class BoardRepositoryImpl extends BoardRepository {
   @override
-  Future<Board> addBoard(Board board) {
-    // TODO: implement addBoard
-    throw UnimplementedError();
+  Future<void> addBoard(Board board) async {
+
   }
 
   @override
