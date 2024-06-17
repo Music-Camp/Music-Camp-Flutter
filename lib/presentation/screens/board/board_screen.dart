@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:music_camp/presentation/screens/board/component/w_board_list.dart';
 import 'package:music_camp/presentation/screens/board/board_add_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import 'component/w_board_list_view.dart';
 import 'component/w_board_app_bar.dart';
 
 class BoardScreen extends StatefulWidget {

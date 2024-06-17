@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:music_camp/data/memory/bloc/board_event.dart';
-
-import 'package:music_camp/data/memory/board_bloc.dart';
 import 'package:music_camp/presentation/screens/board/component/board_add_top_app_bar.dart';
 import 'package:music_camp/presentation/screens/board/board_screen.dart';
 import 'package:music_camp/presentation/screens/main/s_main.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:music_camp/core/custom/custom_text.dart';
-import 'package:music_camp/data/memory/board_bloc.dart';
 import 'package:music_camp/presentation/widget/w_count_icon.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -52,8 +51,6 @@ class BoardItem extends StatelessWidget {
 
                 ],
               ),
-
-
             ],
           ),
           Container(

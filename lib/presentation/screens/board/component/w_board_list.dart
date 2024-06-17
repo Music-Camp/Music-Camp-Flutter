@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:music_camp/data/memory/bloc/board_bloc_state.dart';
-import 'package:music_camp/data/memory/board_bloc.dart';
 import 'package:music_camp/domain/model/board.dart';
 import 'package:music_camp/presentation/screens/board/component/w_board_item.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -21,7 +19,7 @@ class BoardList extends StatelessWidget {
     // });
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
-        return BoardItem(Board(postId: 1, userId: 1, nickName: '안영준', title: '제목입니다', content: '내용입니다', imageUrl: '', likeNum: 3, createdAt: DateTime(2024,1,1), updatedAt: DateTime(2024,1,1)));
+        return BoardItem(Board(postId: "1", userId: "1", nickName: '안영준', title: '제목입니다', content: '내용입니다', imageUrl: '', likeNum: "3", createdAt: DateTime(2024,1,1).toString(), updatedAt: DateTime(2024,1,1).toString()));
       },
       itemCount: 10,
 

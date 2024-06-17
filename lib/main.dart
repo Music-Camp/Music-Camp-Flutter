@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:music_camp/data/memory/board_bloc.dart';
 import 'package:music_camp/presentation/main/routes/routes.dart';
+import 'package:music_camp/presentation/screens/board/bloc/board_bloc.dart';
 
 import 'package:timeago_flutter/timeago_flutter.dart' as timeago;
 
