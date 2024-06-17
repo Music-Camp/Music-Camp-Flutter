@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/util/app_keyboard_util.dart';
 import 'board_add_photo_list_view.dart';
 
 class BoardAddListView extends StatefulWidget {
@@ -9,13 +13,18 @@ class BoardAddListView extends StatefulWidget {
   State<BoardAddListView> createState() => _BoardAddListViewState();
 }
 
-class _BoardAddListViewState extends State<BoardAddListView> {
+class _BoardAddListViewState extends State<BoardAddListView> with AfterLayoutMixin{
+  final textController = TextEditingController();
+  final node = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         // 제목
         TextField(
+          focusNode: node,
+          controller: textController,
           autofocus: true,
           decoration: InputDecoration(
             suffixIcon: Icon(Icons.clear),
@@ -57,5 +66,10 @@ class _BoardAddListViewState extends State<BoardAddListView> {
 
       ],
     );
+  }
+
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context) {
+    AppKeyboardUtil.show(context, node);
   }
 }

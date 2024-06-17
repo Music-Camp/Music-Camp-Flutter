@@ -25,6 +25,16 @@ dependencies:
   injectable:
   logger:
   freezed_annotation:
+  velocity_x:
+
+  after_layout:
+  nav:
+  timeago_flutter:
+  get:
+  go_router:
+
+
+
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +42,8 @@ dev_dependencies:
 
 
   flutter_lints: ^2.0.0
+  freezed:
+  build_runner:
 
 flutter:
 
@@ -43,5 +55,7 @@ flutter:
     - assets/image/
     - assets/svg/
     - assets/lottie/
+    - assets/image/splash/
+
 
 
